@@ -42,7 +42,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@d3p1/commitlint-config": "^1.0.0",
-    "@types/node": "^20.5.9",
+    "@types/node": "^20.10.7",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "@typescript-eslint/parser": "^6.8.0",
     "eslint": "^8.48.0",
