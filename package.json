@@ -43,7 +43,7 @@
     "@commitlint/cli": "^17.7.1",
     "@d3p1/commitlint-config": "^1.0.0",
     "@types/node": "^20.5.9",
-    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
     "@typescript-eslint/parser": "^6.8.0",
     "eslint": "^8.48.0",
     "eslint-plugin-github": "^4.10.0",
