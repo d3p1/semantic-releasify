@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/d3p1/semantic-releasify/compare/v1.5.0...v1.5.1) (2026-02-06)
+
+
+### Bug Fixes
+
+* add builded code after semantic-release update [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([b1acec2](https://github.com/d3p1/semantic-releasify/commit/b1acec2b2e20b8e069b623a3cc915423b265188a))
+
 # [1.5.0](https://github.com/d3p1/semantic-releasify/compare/v1.4.0...v1.5.0) (2026-02-06)
 
 
