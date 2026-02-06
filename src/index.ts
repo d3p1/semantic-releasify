@@ -16,6 +16,29 @@ import semanticRelease from 'semantic-release';
 export async function run(): Promise<void> {
   try {
     /**
+     * @note Check if Docker release is enabled and process related inputs
+     * @note If there is an error parsing `docker-args`, then it will be
+     *       thrown an error that will be caught and reported
+     */
+    let dockerRelease: string | [string, {[key: string]: string | undefined}] =
+      '';
+    if (core.getBooleanInput('is-docker-release')) {
+      const dockerArgs = core.getInput('docker-args');
+      const parsedDockerArgs = dockerArgs ? JSON.parse(dockerArgs) : {};
+
+      dockerRelease = [
+        '@codedependant/semantic-release-docker',
+        {
+          dockerRegistry: core.getInput('docker-registry'),
+          dockerProject: core.getInput('docker-project'),
+          dockerImage: core.getInput('docker-image'),
+          dockerFile: core.getInput('docker-file'),
+          dockerArgs: parsedDockerArgs
+        }
+      ];
+    }
+
+    /**
      * @note Dispatch release
      */
     const result = await semanticRelease({
@@ -26,22 +49,7 @@ export async function run(): Promise<void> {
         '@semantic-release/release-notes-generator',
         '@semantic-release/changelog',
         '@semantic-release/npm',
-        [
-          '@codedependant/semantic-release-docker',
-          {
-            dockerRegistry:
-              core.getInput('docker-registry') === ''
-                ? null
-                : core.getInput('docker-registry'),
-            dockerProject:
-              core.getInput('docker-project') === ''
-                ? null
-                : core.getInput('docker-project'),
-            dockerImage: core.getInput('docker-image'),
-            dockerFile: core.getInput('docker-file'),
-            dockerArgs: core.getInput('docker-args')
-          }
-        ],
+        dockerRelease,
         '@semantic-release/github',
         '@semantic-release/git'
       ]
@@ -59,9 +67,6 @@ export async function run(): Promise<void> {
       core.info('No release published.');
     }
   } catch (error) {
-    /**
-     * @note Fail the workflow run if an error occurs
-     */
     if (error instanceof Error) {
       core.setFailed(error.message);
     }
