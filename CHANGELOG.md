@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/d3p1/semantic-releasify/compare/v1.3.0...v1.4.0) (2026-02-06)
+
+
+### Features
+
+* update semantic-release module version to allow OIDC auth on npm publish [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([6972e45](https://github.com/d3p1/semantic-releasify/commit/6972e45f8fb77c8796ce505975aa6fc1d750fc1b))
+
 # [1.3.0](https://github.com/d3p1/semantic-releasify/compare/v1.2.0...v1.3.0) (2026-02-06)
 
 
