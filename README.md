@@ -18,6 +18,10 @@ A little [GitHub Action](https://docs.github.com/en/actions) for automated relea
 > [!NOTE] 
 > For the moment, [it is only possible to publish to `npm` registries](https://github.com/d3p1/semantic-releasify/issues/7))
 
+> [!WARNING]
+> It is important to understand that this action uses the [`@semantic-release/git`](https://github.com/semantic-release/git), which commit changes to the `package.json`, `package-lock.json` and `CHANGELOG.md`.
+> This practice is [discouraged by `semantic-release`](https://semantic-release.gitbook.io/semantic-release/support/faq#making-commits-during-the-release-process-adds-significant-complexity). The main reason is that it adds complexity. For instance, if your release branch is a [protected branch](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches), you must add the [`semantic-release` user as collaborator with admin permissions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository) so it can push the release commit. 
+
 ## Usage
 
 See [`action.yml`](./action.yml)
