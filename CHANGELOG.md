@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/d3p1/semantic-releasify/compare/v1.2.0...v1.3.0) (2026-02-06)
+
+
+### Features
+
+* update semantic-release module version [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([d351f05](https://github.com/d3p1/semantic-releasify/commit/d351f05e815f9c284f13407f221c51790223df0d))
+
 # [1.2.0](https://github.com/d3p1/semantic-releasify/compare/v1.1.1...v1.2.0) (2023-10-18)
 
 
