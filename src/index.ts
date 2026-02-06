@@ -4,8 +4,7 @@
  * @link        https://semantic-release.gitbook.io/semantic-release/
  * @link        https://semantic-release.gitbook.io/semantic-release/developer-guide/js-api
  */
-// prettier-ignore
-import * as core       from '@actions/core';
+import * as core from '@actions/core';
 import semanticRelease from 'semantic-release';
 
 /**
@@ -18,11 +17,10 @@ export async function run(): Promise<void> {
     /**
      * @note Dispatch release
      */
-    // prettier-ignore
     const result = await semanticRelease({
-      branches : [core.getInput('branch')],
+      branches: [core.getInput('branch')],
       tagFormat: core.getInput('tag-format'),
-      plugins  : [
+      plugins: [
         '@semantic-release/commit-analyzer',
         '@semantic-release/release-notes-generator',
         '@semantic-release/changelog',
@@ -56,5 +54,4 @@ export async function run(): Promise<void> {
 /**
  * @note Execute action
  */
-// eslint-disable-next-line @typescript-eslint/no-floating-promises
 run();
