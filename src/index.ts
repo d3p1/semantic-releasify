@@ -3,6 +3,7 @@
  * @author      C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)
  * @link        https://semantic-release.gitbook.io/semantic-release/
  * @link        https://semantic-release.gitbook.io/semantic-release/developer-guide/js-api
+ * @link        https://github.com/esatterwhite/semantic-release-docker
  */
 import * as core from '@actions/core';
 import semanticRelease from 'semantic-release';
@@ -25,6 +26,22 @@ export async function run(): Promise<void> {
         '@semantic-release/release-notes-generator',
         '@semantic-release/changelog',
         '@semantic-release/npm',
+        [
+          '@codedependant/semantic-release-docker',
+          {
+            dockerRegistry:
+              core.getInput('docker-registry') === ''
+                ? null
+                : core.getInput('docker-registry'),
+            dockerProject:
+              core.getInput('docker-project') === ''
+                ? null
+                : core.getInput('docker-project'),
+            dockerImage: core.getInput('docker-image'),
+            dockerFile: core.getInput('docker-file'),
+            dockerArgs: core.getInput('docker-args')
+          }
+        ],
         '@semantic-release/github',
         '@semantic-release/git'
       ]

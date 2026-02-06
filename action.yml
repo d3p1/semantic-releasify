@@ -39,6 +39,54 @@ inputs:
     required   : false
     default    : 'v${version}'
 
+  ##
+  # @note Docker registry
+  # @note If `default` is an empty string, it defaults to Docker Hub
+  # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
+  ##
+  docker-registry:
+    description: 'The hostname and port used by the the registry'
+    required   : false
+    default    : ''
+
+  ##
+  # @note Docker project
+  # @note If `default` is an empty string, it defaults to the `name` defined
+  #       at `package.json`
+  # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
+  ##
+  docker-project:
+    description: 'The project or repository name to publish the image to'
+    required   : false
+    default    : ''
+
+  ##
+  # @note Docker image
+  # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
+  ##
+  docker-image:
+    description: 'The name of the image to release'
+    required: false
+    default: 'app'
+
+  ##
+  # @note File used to build the image
+  # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
+  ##
+  docker-file:
+    description: 'Path to file used to build the image'
+    required: false
+    default: 'Dockerfile'
+
+  ##
+  # @note Docker args
+  # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
+  ##
+  docker-args:
+    description: 'An object of arguments to use for the image build'
+    required: false
+    default: '{}'
+
 ##
 # @note Define action entry point
 ##
