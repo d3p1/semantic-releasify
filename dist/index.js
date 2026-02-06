@@ -20,7 +20,8 @@ export async function run() {
          *       thrown an error that will be caught and reported
          */
         let dockerRelease = '';
-        if (core.getBooleanInput('is-docker-release')) {
+        if (core.getInput('is-docker-release') &&
+            core.getBooleanInput('is-docker-release')) {
             const dockerArgs = core.getInput('docker-args');
             const parsedDockerArgs = dockerArgs ? JSON.parse(dockerArgs) : {};
             dockerRelease = [
