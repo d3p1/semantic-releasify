@@ -13,10 +13,19 @@
 
 A tiny [GitHub Action](https://docs.github.com/en/actions) for automated releases, changelogs, and package publishing with [`semantic-release`](https://semantic-release.gitbook.io/semantic-release/). 
 
-[`semantic-release`](https://semantic-release.gitbook.io/semantic-release/) already has a [great explained recipe to configure a GitHub Action using its library](https://semantic-release.gitbook.io/semantic-release/recipes/ci-configurations/github-actions). The idea of this [GitHub Action](https://docs.github.com/en/actions) is to ecapsulate a basic [configuration](https://semantic-release.gitbook.io/semantic-release/usage/configuration) with basic [plugins](https://semantic-release.gitbook.io/semantic-release/usage/plugins) to have a handful and easy way to generate/update the project `CHANGELOG`, dispatch a GitHub release and publish the related package and/or related [Docker](https://www.docker.com/) image.
+> [!NOTE]
+> [`semantic-release`](https://semantic-release.gitbook.io/semantic-release/) already has a [great explained recipe to configure a GitHub Action using its library](https://semantic-release.gitbook.io/semantic-release/recipes/ci-configurations/github-actions). 
+
+The idea of this [GitHub Action](https://docs.github.com/en/actions) is to encapsulate a basic [configuration](https://semantic-release.gitbook.io/semantic-release/usage/configuration) with basic [plugins](https://semantic-release.gitbook.io/semantic-release/usage/plugins) to have a handful and easy way to:
+
+- Generate/update the project `CHANGELOG`. 
+- Dispatch a [GitHub release](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases).
+- Update the related [`npm` package] version in the `package.json`.  
+- Publish the related [`npm` package](https://www.npmjs.com/).
+- Publish the related [Docker image](https://www.docker.com/).
 
 > [!NOTE] 
-> For the moment, [it is only possible to publish to `npm` registries](https://github.com/d3p1/semantic-releasify/issues/7))
+> For the moment, [it is only possible to publish `npm` packages to `npmjs` registry](https://github.com/d3p1/semantic-releasify/issues/7)).
 
 > [!WARNING]
 > It is important to understand that this action uses the [`@semantic-release/git`](https://github.com/semantic-release/git), which commit changes to the `package.json`, `package-lock.json` and `CHANGELOG.md`.
@@ -31,12 +40,14 @@ See [`action.yml`](./action.yml)
   with:
     ##
     # @note The branch on which release should happen
+    # @note The targeted branch is used by default
     # @link https://semantic-release.gitbook.io/semantic-release/usage/configuration#branches
     ##
     branch: ''
 
     ##
     # @note The Git tag format used by semantic-release to identify releases
+    # @note The `v${version}` is used by default
     # @link https://semantic-release.gitbook.io/semantic-release/usage/configuration#tagformat
     ##
     tag-format: ''
@@ -79,7 +90,7 @@ See [`action.yml`](./action.yml)
     docker-args: '{arg1: "value1", arg2: "value2"}'
 ```
 
-**Basic:**
+For example:
 
 ```yaml
 jobs:
@@ -102,23 +113,23 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-The `branch` and `tag-format` inputs are optional. If not supplied, the targeted branch and [`v${version}` format](https://lodash.com/docs#template) will be used, respectively.
+> [!NOTE]
+> It is necessary to set the described [`permissions`](https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs), so the bot can execute the following actions:
+> - `contents: write`: Publish a release.
+> - `issues: write`: Comment on released issues.
+> - `pull-requests: write`: Comment on released pull requests.
+> - `id-token: write`: Enable use of `OIDC` for trusted publishing and `npm` provenance.
 
-It is necessary to set the described [`permissions`](https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs), so the bot can execute the following actions:
-
-- `contents: write`: Publish a release 
-- `issues: write`: Comment on released issues  
-- `pull-requests: write`: Comment on released pull requests  
-- `id-token: write`: Enable use of `OIDC` for trusted publishing and `npm` provenance
-
-Also, if you want to publish the module/package to [`npm`](https://www.npmjs.com/), it is necessary to [set `private: false` within your `package.json`](https://semantic-release.gitbook.io/semantic-release/support/faq#why-is-the-package) and to [configure the `NPM_TOKEN`](https://semantic-release.gitbook.io/semantic-release/usage/ci-configuration) as [secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions). Visit the used [`@semantic-release/npm` plugin for more information](https://github.com/semantic-release/npm).
-
-Finally, if you want to publish a [Docker](https://www.docker.com/) image, you must [configure the `DOCKER_REGISTRY_USER` and `DOCKER_REGISTRY_PASSWORD`](https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#configuration) as [secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions). Visit the used [`@codedependant/semantic-release-docker` for more information](https://github.com/esatterwhite/semantic-release-docker).                      
+> [!NOTE]
+> If you want to publish the module/package to [`npm`](https://www.npmjs.com/), it is necessary to [set `private: false` within your `package.json`](https://semantic-release.gitbook.io/semantic-release/support/faq#why-is-the-package) and to [configure the `NPM_TOKEN`](https://semantic-release.gitbook.io/semantic-release/usage/ci-configuration) as [secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions). Visit the used [`@semantic-release/npm` plugin for more information](https://github.com/semantic-release/npm).
 
 > [!NOTE]
 > Now, instead of using a `NPM_TOKEN` token to publish, [`npm` recommends the use of `id-token: write` that enables `OIDC`](https://docs.npmjs.com/trusted-publishers). To use `OIDC` authentication, you must configure a trusted publisher for your package, [as explained by the official documentation](https://docs.npmjs.com/trusted-publishers).
 > If it is used `OIDC`, you can [enable the setting `Require two-factor authentication and disallow tokens`](https://docs.npmjs.com/trusted-publishers#how-to-configure-maximum-security) to improve you package security.
 > Please note that if `OIDC` is not enabled, traditional token-based publishing will be used.
+
+> [!NOTE]
+> If you want to publish a [Docker](https://www.docker.com/) image, you must [configure the `DOCKER_REGISTRY_USER` and `DOCKER_REGISTRY_PASSWORD`](https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#configuration) as [secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions). Visit the used [`@codedependant/semantic-release-docker` for more information](https://github.com/esatterwhite/semantic-release-docker).
 
 > [!NOTE] 
 > Remember to set the `GITHUB_TOKEN` environment variable using the autogenerated GitHub secret token because it is required by the plugin [`@semantic-release/github`](https://github.com/semantic-release/github) used by this implementation.
