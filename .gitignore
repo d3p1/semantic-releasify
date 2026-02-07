@@ -67,6 +67,7 @@ build/Release
 # @note Dependency directories
 ##
 jspm_packages/
+node_modules/
 
 ##
 # @note TypeScript v1 declaration files
