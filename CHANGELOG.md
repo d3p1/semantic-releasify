@@ -1,3 +1,17 @@
+# [1.6.0](https://github.com/d3p1/semantic-releasify/compare/v1.5.1...v1.6.0) (2026-02-07)
+
+
+### Bug Fixes
+
+* adjust is-docker-release input use [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([e9aa659](https://github.com/d3p1/semantic-releasify/commit/e9aa659694de76676ce58191c03351c7b71fac75))
+* adjust is-docker-release input use [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([6160170](https://github.com/d3p1/semantic-releasify/commit/6160170136e20952369bc562ab0162f85608f4d5))
+* improve docker image release generation [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([34471f7](https://github.com/d3p1/semantic-releasify/commit/34471f79e7fab1fb00f9576807f52b0b4cc9b562))
+
+
+### Features
+
+* add docker image release [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([72d050e](https://github.com/d3p1/semantic-releasify/commit/72d050e741e0ed492ebf743a50850cfebc5ccb41))
+
 ## [1.5.1](https://github.com/d3p1/semantic-releasify/compare/v1.5.0...v1.5.1) (2026-02-06)
 
 
