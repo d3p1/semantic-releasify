@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/d3p1/semantic-releasify/compare/v1.6.0...v1.6.1) (2026-02-07)
+
+
+### Bug Fixes
+
+* solve lint error [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([91315cb](https://github.com/d3p1/semantic-releasify/commit/91315cb84119db343bcb6b3adef8c91dc176139b))
+
 # [1.6.0](https://github.com/d3p1/semantic-releasify/compare/v1.5.1...v1.6.0) (2026-02-07)
 
 
