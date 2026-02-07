@@ -1,3 +1,20 @@
+# [1.7.0](https://github.com/d3p1/semantic-releasify/compare/v1.6.2...v1.7.0) (2026-02-07)
+
+
+### Bug Fixes
+
+* adjust action entry point [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([da93aac](https://github.com/d3p1/semantic-releasify/commit/da93aacc39e36746b85fbea447916757bc25b62f))
+* adjust build generation [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([bf61ee4](https://github.com/d3p1/semantic-releasify/commit/bf61ee46fa83b259dcfb7bea867ff0bf7263c892))
+* improve dist code [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([1e5b8b3](https://github.com/d3p1/semantic-releasify/commit/1e5b8b3a77f9124d7a35f538c4313c90a8863f50))
+* remove @vercel/ncc logic because semantic-release module does not allow bundle generation [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([06d9d00](https://github.com/d3p1/semantic-releasify/commit/06d9d00addc7d7633db0e4bb5673a9bf4556be8b))
+* remove module definition to avoid es treatment [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([260554b](https://github.com/d3p1/semantic-releasify/commit/260554b7ed0a3ca820af6b38050c72390cb2261f))
+* remove no longer necessary node modules [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([6c2dea3](https://github.com/d3p1/semantic-releasify/commit/6c2dea34a2e29c58eacd46d2a6713ce34bffb697))
+
+
+### Features
+
+* improve dist generation to remove node dependencies [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([566ed45](https://github.com/d3p1/semantic-releasify/commit/566ed4585b4b68e2c69ed15e2ef4b8ac28335456))
+
 ## [1.6.2](https://github.com/d3p1/semantic-releasify/compare/v1.6.1...v1.6.2) (2026-02-07)
 
 
