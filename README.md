@@ -48,6 +48,7 @@ See [`action.yml`](./action.yml)
   
     ##
     # @note Docker registry
+    # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
     ##
     docker-registry: 'registry-1.docker.io'
   
@@ -112,7 +113,7 @@ It is necessary to set the described [`permissions`](https://docs.github.com/en/
 
 Also, if you want to publish the module/package to [`npm`](https://www.npmjs.com/), it is necessary to [set `private: false` within your `package.json`](https://semantic-release.gitbook.io/semantic-release/support/faq#why-is-the-package) and to [configure the `NPM_TOKEN`](https://semantic-release.gitbook.io/semantic-release/usage/ci-configuration) as [secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions). Visit the used [`@semantic-release/npm` plugin for more information](https://github.com/semantic-release/npm).
 
-Finally, if you want to publish a [Docker](https://www.docker.com/) image, you must [configure the `DOCKER_REGISTRY_USER` and `DOCKER_REGISTRY_PASSWORD`](https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#configuration) as [secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions). 
+Finally, if you want to publish a [Docker](https://www.docker.com/) image, you must [configure the `DOCKER_REGISTRY_USER` and `DOCKER_REGISTRY_PASSWORD`](https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#configuration) as [secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions). Visit the used [`@codedependant/semantic-release-docker` for more information](https://github.com/esatterwhite/semantic-release-docker).                      
 
 > [!NOTE]
 > Now, instead of using a `NPM_TOKEN` token to publish, [`npm` recommends the use of `id-token: write` that enables `OIDC`](https://docs.npmjs.com/trusted-publishers). To use `OIDC` authentication, you must configure a trusted publisher for your package, [as explained by the official documentation](https://docs.npmjs.com/trusted-publishers).
