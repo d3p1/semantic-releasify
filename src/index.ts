@@ -6,7 +6,7 @@
  * @link        https://github.com/esatterwhite/semantic-release-docker
  */
 import * as core from '@actions/core';
-import semanticRelease from 'semantic-release';
+import semanticRelease, {PluginSpec} from 'semantic-release';
 
 /**
  * Action entry point
@@ -20,26 +20,26 @@ export async function run(): Promise<void> {
      * @note If there is an error parsing `docker-args`, then it will be
      *       thrown an error that will be caught and reported
      */
-    let dockerRelease: string | [string, {[key: string]: string | undefined}] =
-      '';
-    if (
+    const isDockerRelease =
       core.getInput('is-docker-release') &&
-      core.getBooleanInput('is-docker-release')
-    ) {
-      const dockerArgs = core.getInput('docker-args');
-      const parsedDockerArgs = dockerArgs ? JSON.parse(dockerArgs) : {};
-
-      dockerRelease = [
-        '@codedependant/semantic-release-docker',
-        {
-          dockerRegistry: core.getInput('docker-registry'),
-          dockerProject: core.getInput('docker-project'),
-          dockerImage: core.getInput('docker-image'),
-          dockerFile: core.getInput('docker-file'),
-          dockerArgs: parsedDockerArgs
-        }
-      ];
-    }
+      core.getBooleanInput('is-docker-release');
+    const dockerPlugin: PluginSpec[] = isDockerRelease
+      ? [
+          [
+            '@codedependant/semantic-release-docker',
+            {
+              dockerRegistry: core.getInput('docker-registry'),
+              dockerProject: core.getInput('docker-project'),
+              dockerImage: core.getInput('docker-image'),
+              dockerFile: core.getInput('docker-file'),
+              dockerArgs: (() => {
+                const dockerArgs = core.getInput('docker-args');
+                return dockerArgs ? JSON.parse(dockerArgs) : {};
+              })()
+            }
+          ]
+        ]
+      : [];
 
     /**
      * @note Dispatch release
@@ -52,7 +52,7 @@ export async function run(): Promise<void> {
         '@semantic-release/release-notes-generator',
         '@semantic-release/changelog',
         '@semantic-release/npm',
-        dockerRelease,
+        ...dockerPlugin,
         '@semantic-release/github',
         '@semantic-release/git'
       ]
