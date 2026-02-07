@@ -6,7 +6,8 @@
  * @link        https://github.com/esatterwhite/semantic-release-docker
  */
 import * as core from '@actions/core';
-import semanticRelease, {PluginSpec} from 'semantic-release';
+import semanticRelease from 'semantic-release';
+import type {PluginSpec} from 'semantic-release';
 
 /**
  * Action entry point
