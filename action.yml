@@ -57,7 +57,8 @@ inputs:
 
   ##
   # @note Docker project
-  # @note If not defined, it is used the scope of the `name` mentioned in `package.json`
+  # @note If not defined, it is used the scope of the `name` mentioned in `package.json`.
+  #       It is your Docker user
   # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
   ##
   docker-project:

@@ -65,7 +65,8 @@ See [`action.yml`](./action.yml)
   
     ##
     # @note Docker project
-    # @note If not defined, it is used the scope of the `name` mentioned in `package.json`
+    # @note If not defined, it is used the scope of the `name` mentioned in `package.json`.
+    #       It is your Docker user
     # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
     ##
     docker-project: 'd3p1'
@@ -108,9 +109,19 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
+        
     - uses: d3p1/semantic-releasify@v1
+      with:
+        is-docker-release: true
+        docker-project: 'd3p1'
+        docker-image: 'app'
+        docker-file: 'Dockerfile'
+        docker-args: '{"BASE_NODE_VERSION": "22.21", "BASE_BUN_VERSION": "1.3"}'
       env :
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+        DOCKER_REGISTRY_USER: ${{ secrets.DOCKER_REGISTRY_USER }}
+        DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
 ```
 
 > [!NOTE]
