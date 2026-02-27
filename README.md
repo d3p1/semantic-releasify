@@ -88,13 +88,13 @@ See [`action.yml`](./action.yml)
     # @note Docker args
     # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
     ##
-    docker-args: '{arg1: "value1", arg2: "value2"}'
+    docker-args: '{"arg1": "value1", "arg2": "value2"}'
 
     ##
     # @note Docker build additional flags
     # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#build-flags
     ##
-    docker-build-flags: '{secret: "id=github-token,env=GITHUB_TOKEN"}'
+    docker-build-flags: '{"secret": "id=github-token,env=GITHUB_TOKEN"}'
 ```
 
 For example:
@@ -123,7 +123,9 @@ jobs:
           docker-image: 'app'
           docker-file: 'Dockerfile'
           docker-args: '{"BASE_NODE_VERSION": "22.21", "BASE_BUN_VERSION": "1.3"}'
+          docker-build-flags: '{"secret": ["id=github-username,env=GITHUB_USERNAME", "id=github-token,env=GITHUB_TOKEN"]}'
         env :
+          GITHUB_USERNAME: ${{ github.repository_owner }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
           DOCKER_REGISTRY_USER: ${{ secrets.DOCKER_REGISTRY_USER }}
