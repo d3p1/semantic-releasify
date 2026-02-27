@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/d3p1/semantic-releasify/compare/v1.7.0...v1.8.0) (2026-02-27)
+
+
+### Features
+
+* add the possibility of sending additional build flags to the docker build process [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([a9b7e06](https://github.com/d3p1/semantic-releasify/commit/a9b7e066aade026220e337e0b84136f3a71933cb))
+
 # [1.7.0](https://github.com/d3p1/semantic-releasify/compare/v1.6.2...v1.7.0) (2026-02-07)
 
 
