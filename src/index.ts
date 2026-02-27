@@ -36,6 +36,10 @@ export async function run(): Promise<void> {
               dockerArgs: (() => {
                 const dockerArgs = core.getInput('docker-args');
                 return dockerArgs ? JSON.parse(dockerArgs) : {};
+              })(),
+              dockerBuildFlags: (() => {
+                const dockerBuildFlags = core.getInput('docker-build-flags');
+                return dockerBuildFlags ? JSON.parse(dockerBuildFlags) : {};
               })()
             }
           ]

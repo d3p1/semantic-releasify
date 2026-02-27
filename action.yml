@@ -90,6 +90,14 @@ inputs:
     description: 'An object of arguments to use for the image build. Define only if `is-docker-release === true`'
     required: false
 
+  ##
+  # @note Docker build additional flags
+  # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#build-flags
+  ##
+  docker-build-flags:
+    description: 'An object of additional flags to use for the image build. Define only if `is-docker-release === true`'
+    required: false
+
 ##
 # @note Define action entry point
 ##
