@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/d3p1/semantic-releasify/compare/v1.8.0...v1.8.1) (2026-02-27)
+
+
+### Bug Fixes
+
+* add bundle with build feature that allows use to define additional build flags [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([3d99fef](https://github.com/d3p1/semantic-releasify/commit/3d99fef407914111e3b8f948ac3a821e577b865a))
+
 # [1.8.0](https://github.com/d3p1/semantic-releasify/compare/v1.7.0...v1.8.0) (2026-02-27)
 
 
