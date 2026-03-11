@@ -1,3 +1,10 @@
+## [1.8.3](https://github.com/d3p1/semantic-releasify/compare/v1.8.2...v1.8.3) (2026-03-11)
+
+
+### Bug Fixes
+
+* add debug of OIDC environment variables [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([3bef46f](https://github.com/d3p1/semantic-releasify/commit/3bef46fa941c62433b4b611bdb09eadd4c4e2a48))
+
 ## [1.8.2](https://github.com/d3p1/semantic-releasify/compare/v1.8.1...v1.8.2) (2026-03-11)
 
 
