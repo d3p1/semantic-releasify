@@ -82,11 +82,6 @@ function run() {
                 ]
                 : [];
             /**
-             * @note Debug the presence of the OIDC environment variables
-             */
-            core.debug(`OIDC URL: ${process.env.ACTIONS_ID_TOKEN_REQUEST_URL}`);
-            core.debug(`OIDC TOKEN present: ${!!process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}`);
-            /**
              * @note Dispatch release
              */
             const result = yield (0, semantic_release_1.default)({
