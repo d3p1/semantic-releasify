@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/d3p1/semantic-releasify/compare/v1.8.1...v1.8.2) (2026-03-11)
+
+
+### Bug Fixes
+
+* remove @semantic-release/github package as dependency because it is already inside semantic-release package [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([44fe65c](https://github.com/d3p1/semantic-releasify/commit/44fe65c4922741b40029516bced846f1065dde2a))
+
 ## [1.8.1](https://github.com/d3p1/semantic-releasify/compare/v1.8.0...v1.8.1) (2026-02-27)
 
 
