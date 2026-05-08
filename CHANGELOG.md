@@ -1,3 +1,10 @@
+## [1.8.5](https://github.com/d3p1/semantic-releasify/compare/v1.8.4...v1.8.5) (2026-05-08)
+
+
+### Bug Fixes
+
+* improve code style [[#1](https://github.com/d3p1/semantic-releasify/issues/1)] ([acfb5ff](https://github.com/d3p1/semantic-releasify/commit/acfb5ff28a0e3a2c7d9126f74cbb182769fab27b))
+
 ## [1.8.4](https://github.com/d3p1/semantic-releasify/compare/v1.8.3...v1.8.4) (2026-03-11)
 
 
