@@ -5,63 +5,63 @@
 name: Test
 
 on:
-  pull_request:
-  push:
-    branches:
-      - main
-      - 'releases/*'
-  workflow_dispatch:
+    pull_request:
+    push:
+        branches:
+            - main
+            - 'releases/*'
+    workflow_dispatch:
 
 permissions:
-  contents: read
+    contents: read
 
 jobs:
-  test-typescript:
-    name   : TypeScript tests
-    runs-on: ubuntu-latest
+    test-typescript:
+        name: TypeScript tests
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout
-        id  : checkout
-        uses: actions/checkout@v4
+        steps:
+            -   name: Checkout
+                id: checkout
+                uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        id  : setup-node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-          cache       : npm
+            -   name: Setup Node.js
+                id: setup-node
+                uses: actions/setup-node@v3
+                with:
+                    node-version: 20
+                    cache: npm
 
-      - name: Install dependencies
-        id  : npm-ci
-        run : npm ci
+            -   name: Install dependencies
+                id: npm-ci
+                run: npm ci
 
-      - name: Check format
-        id  : npm-format-check
-        run : npm run format:check
+            -   name: Check format
+                id: npm-format-check
+                run: npm run format:check
 
-      - name: Lint
-        id  : npm-lint
-        run : npm run lint
+            -   name: Lint
+                id: npm-lint
+                run: npm run lint
 
-  test-action:
-    name   : GitHub Actions test
-    runs-on: ubuntu-latest
+    test-action:
+        name: GitHub Actions test
+        runs-on: ubuntu-latest
 
-    permissions:
-      contents     : write 
-      issues       : write 
-      pull-requests: write 
+        permissions:
+            contents: write
+            issues: write
+            pull-requests: write
 
-    steps:
-      - name: Checkout
-        id  : checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+        steps:
+            -   name: Checkout
+                id: checkout
+                uses: actions/checkout@v4
+                with:
+                    fetch-depth: 0
 
-      - name: Test local action
-        id  : test-action
-        uses: ./
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            -   name: Test local action
+                id: test-action
+                uses: ./
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

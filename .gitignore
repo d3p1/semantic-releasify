@@ -159,6 +159,5 @@ __tests__/runner/*
 # @note IDE files
 ##
 .run
-.idea
 .vscode
 *.code-workspace

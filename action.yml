@@ -6,101 +6,101 @@
 ##
 # @note Define action general information
 ##
-name       : 'Semantic Releasify'
+name: 'Semantic Releasify'
 description: 'A GitHub Action for automated releases, changelogs, and package publishing with semantic-release'
-author     : 'C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)'
+author: 'C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)'
 
 ##
 # @note Define branding icon
 ##
 branding:
-  icon : box
-  color: black
+    icon: box
+    color: black
 
 ##
 # @note Define inputs
 ##
 inputs:
-  ##
-  # @note Branch
-  # @link https://semantic-release.gitbook.io/semantic-release/usage/configuration#branches
-  ##
-  branch:
-    description: 'The branch on which release should happen'
-    required   : false
-    default    : ${{ github.ref_name }}
+    ##
+    # @note Branch
+    # @link https://semantic-release.gitbook.io/semantic-release/usage/configuration#branches
+    ##
+    branch:
+        description: 'The branch on which release should happen'
+        required: false
+        default: ${{ github.ref_name }}
 
-  ##
-  # @note Tag format
-  # @link https://semantic-release.gitbook.io/semantic-release/usage/configuration#tagformat
-  ##
-  tag-format:
-    description: 'The Git tag format used by semantic-release to identify releases'
-    required   : false
-    default    : 'v${version}'
+    ##
+    # @note Tag format
+    # @link https://semantic-release.gitbook.io/semantic-release/usage/configuration#tagformat
+    ##
+    tag-format:
+        description: 'The Git tag format used by semantic-release to identify releases'
+        required: false
+        default: 'v${version}'
 
-  ##
-  # @note Flag to check if it is required to release a Docker image
-  ##
-  is-docker-release:
-    description: 'Check if it is required to release a Docker image'
-    required   : false
+    ##
+    # @note Flag to check if it is required to release a Docker image
+    ##
+    is-docker-release:
+        description: 'Check if it is required to release a Docker image'
+        required: false
 
-  ##
-  # @note Docker registry
-  # @note If not defined, it is used Docker Hub
-  # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
-  ##
-  docker-registry:
-    description: 'The hostname and port used by the the registry. Define only if `is-docker-release === true`'
-    required   : false
+    ##
+    # @note Docker registry
+    # @note If not defined, it is used Docker Hub
+    # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
+    ##
+    docker-registry:
+        description: 'The hostname and port used by the the registry. Define only if `is-docker-release === true`'
+        required: false
 
-  ##
-  # @note Docker project
-  # @note If not defined, it is used the scope of the `name` mentioned in `package.json`.
-  #       It is your Docker user
-  # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
-  ##
-  docker-project:
-    description: 'The project or repository name to publish the image to. Define only if `is-docker-release === true`'
-    required   : false
+    ##
+    # @note Docker project
+    # @note If not defined, it is used the scope of the `name` mentioned in `package.json`.
+    #       It is your Docker user
+    # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
+    ##
+    docker-project:
+        description: 'The project or repository name to publish the image to. Define only if `is-docker-release === true`'
+        required: false
 
-  ##
-  # @note Docker image
-  # @note If not defined, it is used the `name` mentioned in `package.json`
-  # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
-  ##
-  docker-image:
-    description: 'The name of the image to release. Define only if `is-docker-release === true`'
-    required: false
+    ##
+    # @note Docker image
+    # @note If not defined, it is used the `name` mentioned in `package.json`
+    # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
+    ##
+    docker-image:
+        description: 'The name of the image to release. Define only if `is-docker-release === true`'
+        required: false
 
-  ##
-  # @note File used to build the image
-  # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
-  ##
-  docker-file:
-    description: 'Path to file used to build the image. Define only if `is-docker-release === true`'
-    required: false
+    ##
+    # @note File used to build the image
+    # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
+    ##
+    docker-file:
+        description: 'Path to file used to build the image. Define only if `is-docker-release === true`'
+        required: false
 
-  ##
-  # @note Docker args
-  # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
-  ##
-  docker-args:
-    description: 'An object of arguments to use for the image build. Define only if `is-docker-release === true`'
-    required: false
+    ##
+    # @note Docker args
+    # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#options
+    ##
+    docker-args:
+        description: 'An object of arguments to use for the image build. Define only if `is-docker-release === true`'
+        required: false
 
-  ##
-  # @note Docker build additional flags
-  # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#build-flags
-  ##
-  docker-build-flags:
-    description: 'An object of additional flags to use for the image build. Define only if `is-docker-release === true`'
-    required: false
+    ##
+    # @note Docker build additional flags
+    # @link https://github.com/esatterwhite/semantic-release-docker?tab=readme-ov-file#build-flags
+    ##
+    docker-build-flags:
+        description: 'An object of additional flags to use for the image build. Define only if `is-docker-release === true`'
+        required: false
 
 ##
 # @note Define action entry point
 ##
 runs:
-  using: node24
-  main : dist/index.js
+    using: node24
+    main: dist/index.js

@@ -5,48 +5,48 @@
 name: CodeQL
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  schedule:
-    - cron: '31 7 * * 3'
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+    schedule:
+        -   cron: '31 7 * * 3'
 
 jobs:
-  analyze:
-    name   : Analyze
-    runs-on: ubuntu-latest
-    
-    permissions:
-      actions        : read
-      checks         : write
-      contents       : read
-      security-events: write
-    
-    strategy:
-      fail-fast: false
-      matrix   :
-        language:
-          - TypeScript
+    analyze:
+        name: Analyze
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout
-        id  : checkout
-        uses: actions/checkout@v4
+        permissions:
+            actions: read
+            checks: write
+            contents: read
+            security-events: write
 
-      - name: Initialize CodeQL
-        id  : initialize
-        uses: github/codeql-action/init@v2
-        with:
-          languages  : ${{ matrix.language }}
-          source-root: src
+        strategy:
+            fail-fast: false
+            matrix:
+                language:
+                    - TypeScript
 
-      - name: Autobuild
-        id  : autobuild
-        uses: github/codeql-action/autobuild@v2
+        steps:
+            -   name: Checkout
+                id: checkout
+                uses: actions/checkout@v4
 
-      - name: Perform CodeQL analysis
-        id  : analyze
-        uses: github/codeql-action/analyze@v2
+            -   name: Initialize CodeQL
+                id: initialize
+                uses: github/codeql-action/init@v2
+                with:
+                    languages: ${{ matrix.language }}
+                    source-root: src
+
+            -   name: Autobuild
+                id: autobuild
+                uses: github/codeql-action/autobuild@v2
+
+            -   name: Perform CodeQL analysis
+                id: analyze
+                uses: github/codeql-action/analyze@v2

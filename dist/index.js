@@ -75,7 +75,9 @@ function run() {
                             })(),
                             dockerBuildFlags: (() => {
                                 const dockerBuildFlags = core.getInput('docker-build-flags');
-                                return dockerBuildFlags ? JSON.parse(dockerBuildFlags) : {};
+                                return dockerBuildFlags
+                                    ? JSON.parse(dockerBuildFlags)
+                                    : {};
                             })()
                         }
                     ]
